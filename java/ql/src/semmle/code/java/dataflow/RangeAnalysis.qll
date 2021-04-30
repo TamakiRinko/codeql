@@ -91,7 +91,9 @@ private module RangeAnalysisCache {
      */
     cached
     predicate bounded(Expr e, Bound b, int delta, boolean upper, Reason reason) {
+      // Holds if `b + delta` is a valid bound for `e`.
       bounded(e, b, delta, upper, _, _, reason) and
+      // Holds if `b + delta` is a valid bound for `e` and this is the best such delta.
       bestBound(e, b, delta, upper)
     }
   }
